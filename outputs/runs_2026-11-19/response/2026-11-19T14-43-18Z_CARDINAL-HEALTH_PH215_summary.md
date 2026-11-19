@@ -1,7 +1,7 @@
-# CARDINAL-HEALTH × PH215 (Myocardial infarction) — Deep-Dive Summary
+# CARDINAL-DATA × PH215 (Myocardial infarction) — Deep-Dive Summary
 
 **Generated:** 2026-11-19 · **Pipeline:** HDRS → Phenotype Library → HDR UK Gateway → OpenSAFELY scaffolding
-**Quality note:** This run hit four upstream issues, all documented in-line below (per the prompt's error-transparency rule): the exact project name "CARDINAL-HEALTH" does not exist (matched to **CARDINAL-DATA**); the PH1778 endpoint returned **401 Unauthorized**; the Phenotype Library *concepts* search endpoint returned **500** (worked around via phenotype details); the Gateway *dataset* search rejected quoted phrases (worked around with single-word queries).
+**Quality note:** This run hit four upstream issues, all documented in-line below (per the prompt's error-transparency rule): the exact project name "CARDINAL-DATA" does not exist (matched to **CARDINAL-DATA**); the PH1778 endpoint returned **401 Unauthorized**; the Phenotype Library *concepts* search endpoint returned **500** (worked around via phenotype details); the Gateway *dataset* search rejected quoted phrases (worked around with single-word queries).
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Queried name** | CARDINAL-HEALTH — **not found** in the HDRS tracking file |
+| **Queried name** | CARDINAL-DATA — **not found** in the HDRS tracking file |
 | **Matched record** | **CARDINAL-DATA** (the only result of HDRS keyword search "CARDINAL") |
 | **Description** | Extends the cardiovascular-renal-metabolic data specification already proven in the London SDE |
 | **Hosting institution** | London Secure Data Environment (OneLondon) |
@@ -89,7 +89,7 @@ Searches (single-word queries, per § transparency note): `myocardial`, `infarct
 
 ## 4 · MI Codelist Inventory (PH215 + supplements)
 
-All 21 codelists exported to [`code/CARDINAL-HEALTH_PH215/codelists.json`](../code/CARDINAL-HEALTH_PH215/codelists.json) with full code lists.
+All 21 codelists exported to [`code/CARDINAL-DATA_PH215/codelists.json`](../code/CARDINAL-DATA_PH215/codelists.json) with full code lists.
 
 | Terminology | Codelist ID | Version (date) | Source | Codes | Validation | PH215 alignment |
 |---|---|---|---|---|---|---|
@@ -135,7 +135,7 @@ All 21 codelists exported to [`code/CARDINAL-HEALTH_PH215/codelists.json`](../co
 
 ## 6 · OpenSAFELY Scaffolding
 
-Files: [`code/CARDINAL-HEALTH_PH215/cohort_definition.py`](../code/CARDINAL-HEALTH_PH215/cohort_definition.py) · [`codelists.json`](../code/CARDINAL-HEALTH_PH215/codelists.json) · [`README.md`](../code/CARDINAL-HEALTH_PH215/README.md)
+Files: [`code/CARDINAL-DATA_PH215/cohort_definition.py`](../code/CARDINAL-DATA_PH215/cohort_definition.py) · [`codelists.json`](../code/CARDINAL-DATA_PH215/codelists.json) · [`README.md`](../code/CARDINAL-DATA_PH215/README.md)
 
 **Key components (function/variable → PH215 anchor):**
 
@@ -190,7 +190,7 @@ project.yaml
 
 ## 8 · Recommendations (next steps for the CARDINAL-DATA project team)
 
-1. **Name reconciliation.** "CARDINAL-HEALTH" does not exist in HDRS; confirm whether CARDINAL-DATA is the intended project, or add the correct project to the HDRS tracking file. HDRS record fields for PI, code repository and platform URL are all empty — filling these would materially improve future mapping.
+1. **Name reconciliation.** "CARDINAL-DATA" does not exist in HDRS; confirm whether CARDINAL-DATA is the intended project, or add the correct project to the HDRS tracking file. HDRS record fields for PI, code repository and platform URL are all empty — filling these would materially improve future mapping.
 2. **Phenotype refresh.** PH215 v430 is a 2021-10 build on CPRD GOLD/HES to 2016-07. Engage **BHF DSC "Computable phenotypes and codelists"** for a refreshed MI definition, especially the **SNOMED CT primary-care stream** where PH1722's codelist carries explicit GDPPR/QOF-subset warnings and PH2794 (NHSD `mi_cod` refset, 2025-09-12) is the current maintained list.
 3. **Backend choice.** For TPB-only reproduction of PH215 streams on modern London SDE data, the **London SDE Primary Care datasets (ID 1882-1889)** are the native fit (CARDINAL-DATA's home environment); for national scale, CPRD GOLD (PH215-native Read v2) or Aurum (SNOMED) + HES APC via NHS England TRE.
 4. **dm+d medication mapping.** Resolve PH495/PH496/PH622 GPRD product codes → dm+d concept IDs (or source NHSD drug refsets) before running the 12-month secondary-prevention windows on TPP.
@@ -204,7 +204,7 @@ project.yaml
 
 | Step | Tool | Query | Outcome |
 |---|---|---|---|
-| 1 | HDRS MCP `get_project_details` | CARDINAL-HEALTH | ❌ not found |
+| 1 | HDRS MCP `get_project_details` | CARDINAL-DATA | ❌ not found |
 | 2 | HDRS MCP `search_projects` | keyword=CARDINAL | ✅ CARDINAL-DATA (OneLondon SDE) |
 | 3 | HDRS MCP `get_project_details` | CARDINAL-DATA | ✅ metadata above |
 | 4 | PhenotypeMCP `get_phenotype_detail` | PH215 | ✅ v430 spec + 3 concepts (C1296/C1297/C1298) |
@@ -218,4 +218,4 @@ project.yaml
 | 12 | GatewayMCP `search_datasets` | single words (myocardial, heart, cardiovascular, coronary, ...) | ✅ tables §3 |
 | 13 | OpenSAFELY MCP `query_knowledge_base` / `get_doc_section_content` | dataset definition / codelists | ✅ ehrQL idioms + TPP schemas; confirmed via [docs.opensafely.org/ehrql/how-to/codelists](https://docs.opensafely.org/ehrql/how-to/codelists/) |
 
-Response artifact bundle: `outputs/runs_2026-11-19/` (manifest.yaml + code/CARDINAL-HEALTH_PH215/{cohort_definition.py, codelists.json, README.md} + this file).
+Response artifact bundle: `outputs/runs_2026-11-19/` (manifest.yaml + code/CARDINAL-DATA_PH215/{cohort_definition.py, codelists.json, README.md} + this file).
