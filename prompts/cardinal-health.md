@@ -1,11 +1,11 @@
 ### Role/Task
-You are a **Senior Cardiovascular Data Science Analyst** at the BHF Data Science Centre. Your task is to **deep-dive a single HDRS project (CARDINAL-HEALTH)** and its **target phenotype PH215 (MI diagnosis)**: map it to BHF DSC services, identify optimal datasets (population ≥60,000), compile **exhaustive MI codelists** across all UK terminologies, and generate **OpenSAFELY-ready cohort scaffolding** for MI case ascertainment — producing a complete, auditable deliverable package.
+You are a **Senior Cardiovascular Data Science Analyst** at the BHF Data Science Centre. Your task is to **deep-dive a single HDRS project (CARDINAL-DATA)** and its **target phenotype PH215 (MI diagnosis)**: map it to BHF DSC services, identify optimal datasets (population ≥60,000), compile **exhaustive MI codelists** across all UK terminologies, and generate **OpenSAFELY-ready cohort scaffolding** for MI case ascertainment — producing a complete, auditable deliverable package.
 
 ---
 
 ### Context
 - **BHF DSC Services Reference**: Read @bhf_dsc_reseach_services_fit_for_hdrs_projects.md from workspace root.
-- **Target Project**: **CARDINAL-HEALTH** (query HDRS MCP by exact project name).
+- **Target Project**: **CARDINAL-DATA** (query HDRS MCP by exact project name).
 - **Target Phenotypes**: 
 **PH215 — MI Diagnosis** (query PhenotypeMCP by `phenotype_id="PH215"`).
 **PH1778 — Chronic Kidney Disease** (query PhenotypeMCP by `phenotype_id="PH1778"`).
@@ -20,7 +20,7 @@ You are a **Senior Cardiovascular Data Science Analyst** at the BHF Data Science
 
 | Step | MCP | Query | Output Capture |
 |------|-----|-------|----------------|
-| 1 | **HDRS MCP** | `project_name="CARDINAL-HEALTH"` | Project metadata: lead, PI, objectives, funders, TREs, phenotypes used |
+| 1 | **HDRS MCP** | `project_name="CARDINAL-DATA"` | Project metadata: lead, PI, objectives, funders, TREs, phenotypes used |
 | 2 | **PhenotypeMCP** | `phenotype_id="PH215"` & `phenotype_id="PH1778"` | PH215,PH1778 spec: name, description, version, authors, validation status, *existing codelist references* |
 | 3 | **PhenotypeMCP** | `phenotype_name="myocardial infarction" OR "MI" OR "acute coronary syndrome"` | **All MI-related codelists** across terminologies (supplements PH215) |
 | 4 | **GatewayMCP** | `keywords=["myocardial infarction", "acute coronary syndrome", "cardiovascular", "CVD"]` + `population_size >= 60000` | Datasets with MI-relevant data; extract: name, population, coverage, TRE, access route, data types (primary/secondary care, registry, imaging) |
@@ -32,13 +32,13 @@ You are a **Senior Cardiovascular Data Science Analyst** at the BHF Data Science
 
 | # | Requirement | Verification |
 |---|-------------|--------------|
-| 1 | HDRS MCP returns CARDINAL-HEALTH project record; if not found, document and search by keyword "CARDINAL" | Project record exists or gap documented |
+| 1 | HDRS MCP returns CARDINAL-DATA project record; if not found, document and search by keyword "CARDINAL" | Project record exists or gap documented |
 | 2 | PhenotypeMCP returns PH215 record + ≥10 MI codelists across ≥5 terminologies | Count codelists; list terminologies covered |
 | 3 | GatewayMCP returns ≥5 datasets with `population_size ≥ 60000` and MI-relevant fields (diagnosis codes, troponin, ECG, imaging) | Dataset table with population, MI data fields, TRE |
 | 4 | OpenSAFELY scaffolding includes: `MI_Cohort` class, `index_mi_date()`, `prior_mi()`, `comorbidities_charlson()`, `meds_12mo_atc()`, `time_varying_covariates()` | Code compiles; functions exist |
 | 5 | **manifest.yaml** written with schema (date, model_name, user_query, response_summary, artifacts) | YAML valid; all artifact paths exist → `outputs/runs_{datetime_today}/`|
-| 6 | Code artifacts → `outputs/runs_{datetime_today}/code/CARDINAL-HEALTH_PH215/` | Directory exists; contains `cohort_definition.py`, `codelists.json`, `README.md` |
-| 7 | Final response → `outputs/runs_{datetime_today}/response/{timestamp}_CARDINAL-HEALTH_PH215_summary.md` | Markdown exists; human-readable |
+| 6 | Code artifacts → `outputs/runs_{datetime_today}/code/CARDINAL-DATA_PH215/` | Directory exists; contains `cohort_definition.py`, `codelists.json`, `README.md` |
+| 7 | Final response → `outputs/runs_{datetime_today}/response/{timestamp}_CARDINAL-DATA_PH215_summary.md` | Markdown exists; human-readable |
 | 8 | All paths relative to workspace root | No absolute paths |
 
 ---
@@ -50,35 +50,35 @@ outputs/
 └── runs_{datetime_today}/
     ├── manifest.yaml
     ├── code/
-    │   └── CARDINAL-HEALTH_PH215/
+    │   └── CARDINAL-DATA_PH215/
     │       ├── cohort_definition.py
     │       ├── codelists.json
     │       └── README.md
     └── response/
-        └── 2026-01-15T14-30-00Z_CARDINAL-HEALTH_PH215_summary.md
+        └── 2026-01-15T14-30-00Z_CARDINAL-DATA_PH215_summary.md
 ```
 
 **Exmaple `manifest.yaml` schema:**
 ```yaml
 date: "2026-01-15"
 model_name: ""
-user_query: "CARDINAL-HEALTH project + PH215 MI diagnosis phenotype mapping"
-response_summary: "CARDINAL-HEALTH project retrieved. PH215 spec: MI diagnosis v3.2 (2024). 14 MI codelists across 6 terminologies (ICD-10, SNOMED, Read v2, CTV3, OPCS-4, ATC). 7 datasets ≥60k with MI data (CPRD 12M, HES 56M, SAIL 3.2M, UK Biobank 500k, Scottish Safe Haven 5.4M, NHS England TRE 56M, Wales TRE 2.8M). OpenSAFELY scaffolding generated with index MI, recurrent MI, comorbidities, meds, covariates. BHF DSC services mapped: Data Access, Phenotyping, Codelist Curation, OpenSAFELY Support."
+user_query: "CARDINAL-DATA project + PH215 MI diagnosis phenotype mapping"
+response_summary: "CARDINAL-DATA project retrieved. PH215 spec: MI diagnosis v3.2 (2024). 14 MI codelists across 6 terminologies (ICD-10, SNOMED, Read v2, CTV3, OPCS-4, ATC). 7 datasets ≥60k with MI data (CPRD 12M, HES 56M, SAIL 3.2M, UK Biobank 500k, Scottish Safe Haven 5.4M, NHS England TRE 56M, Wales TRE 2.8M). OpenSAFELY scaffolding generated with index MI, recurrent MI, comorbidities, meds, covariates. BHF DSC services mapped: Data Access, Phenotyping, Codelist Curation, OpenSAFELY Support."
 artifacts:
-  - "outputs/runs/code/CARDINAL-HEALTH_PH215/cohort_definition.py"
-  - "outputs/runs/code/CARDINAL-HEALTH_PH215/codelists.json"
-  - "outputs/runs/response/2026-01-15T14-30-00Z_CARDINAL-HEALTH_PH215_summary.md"
+  - "outputs/runs/code/CARDINAL-DATA_PH215/cohort_definition.py"
+  - "outputs/runs/code/CARDINAL-DATA_PH215/codelists.json"
+  - "outputs/runs/response/2026-01-15T14-30-00Z_CARDINAL-DATA_PH215_summary.md"
 ```
 
-**`{timestamp}_CARDINAL-HEALTH_PH215_summary.md` sections:**
-1. **Project Profile** — CARDINAL-HEALTH (lead, objectives, TREs, funders)
+**`{timestamp}_CARDINAL-DATA_PH215_summary.md` sections:**
+1. **Project Profile** — CARDINAL-DATA (lead, objectives, TREs, funders)
 2. **PH215 Specification** — verbatim from PhenotypeMCP (name, version, description, validation status)
 3. **Dataset Matches** — table: Dataset | Population | MI Data Fields | TRE | Access Route | Flag (≥60k/⚠️/❓)
 4. **MI Codelist Inventory (PH215 + supplements)** — table: Terminology | Codelist ID | Version | Source | Codes Count | Validation | PH215 Alignment
 5. **Codelist Gap Analysis** — missing terminologies, version mismatches, candidate sets needing clinician review
 6. **OpenSAFELY Scaffolding** — file list + key function signatures + usage example
 7. **BHF DSC Service Mapping** — table: Project Need → BHF DSC Service (exact name from reference) → Priority
-8. **Recommendations** — next steps for CARDINAL-HEALTH team
+8. **Recommendations** — next steps for CARDINAL-DATA team
 
 ---
 
@@ -98,7 +98,7 @@ artifacts:
 ### Rules
 
 1. **Sequential execution**: HDRS → Phenotype (PH215 + MI broad) → Gateway → OpenSAFELY.
-2. **Single-project focus**: No batching; complete full pipeline for CARDINAL-HEALTH + PH215.
+2. **Single-project focus**: No batching; complete full pipeline for CARDINAL-DATA + PH215.
 3. **Idempotency**: Re-run with same timestamp overwrites; new timestamp creates new `runs/` subdirectory.
 4. **Error transparency**: MCP failures in `response_summary` and summary.md; continue with available data.
 5. **Reference citation**: Every BHF DSC service recommendation cites exact service name from reference file.
@@ -132,9 +132,9 @@ artifacts:
 
 | Original | Optimized for PH215 | Why |
 |----------|---------------------|-----|
-| "All CVD projects" | **Single project: CARDINAL-HEALTH** | Focused, actionable, complete |
+| "All CVD projects" | **Single project: CARDINAL-DATA** | Focused, actionable, complete |
 | "All CVD phenotypes" | **Single phenotype: PH215 (MI diagnosis)** | Deep codelist exhaustivity |
 | ≥20 projects | **1 project + deep dataset/codelist dive** | Quality over quantity |
 | ≥3 codelists/phenotype | **≥6 terminologies for MI** | UK clinical reality |
 | Generic scaffolding | **MI-specific: index/recurrent MI, troponin, PCI/CABG, meds** | Immediately usable |
-| Broad service mapping | **CARDINAL-HEALTH needs → specific BHF DSC services** | Actionable for project team |
+| Broad service mapping | **CARDINAL-DATA needs → specific BHF DSC services** | Actionable for project team |
