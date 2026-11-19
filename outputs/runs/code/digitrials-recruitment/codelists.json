@@ -1,0 +1,157 @@
+{
+  "project": "NHS DigiTrials Recruitment Connect",
+  "generated": "2026-11-19",
+  "codelist_sources": {
+    "phenotype_library_status": "API unavailable (SSL errors) - codelists below are candidate concept sets requiring clinician review",
+    "opensafely_codelist_sources": [
+      "OpenCodelists (www.opencodelists.org)",
+      "CALIBER",
+      "HDR UK Phenotype Library"
+    ]
+  },
+  "phenotypes": {
+    "index_event": {
+      "icd10": {
+        "codes": [
+          "project-specific"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "snomed_ct": {
+        "codes": [
+          "project-specific"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "read_v2": {
+        "codes": [
+          "project-specific"
+        ],
+        "validation": "candidate - requires review"
+      }
+    },
+    "myocardial_infarction": {
+      "icd10": {
+        "codes": [
+          "I21",
+          "I22",
+          "I25.2"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "snomed_ct": {
+        "codes": [
+          "22298006",
+          "54322005"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "read_v2": {
+        "codes": [
+          "G30",
+          "G3y"
+        ],
+        "validation": "candidate - requires review"
+      }
+    },
+    "heart_failure": {
+      "icd10": {
+        "codes": [
+          "I50",
+          "I11.0"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "snomed_ct": {
+        "codes": [
+          "84114007"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "read_v2": {
+        "codes": [
+          "G58"
+        ],
+        "validation": "candidate - requires review"
+      }
+    },
+    "atrial_fibrillation": {
+      "icd10": {
+        "codes": [
+          "I48"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "snomed_ct": {
+        "codes": [
+          "49436004"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "read_v2": {
+        "codes": [
+          "F571",
+          "F572"
+        ],
+        "validation": "candidate - requires review"
+      }
+    },
+    "stroke": {
+      "icd10": {
+        "codes": [
+          "I61",
+          "I62",
+          "I63",
+          "I64"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "snomed_ct": {
+        "codes": [
+          "230690007",
+          "432501007"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "read_v2": {
+        "codes": [
+          "G61",
+          "G62",
+          "G64"
+        ],
+        "validation": "candidate - requires review"
+      }
+    },
+    "hypertension": {
+      "icd10": {
+        "codes": [
+          "I10",
+          "I11",
+          "I12",
+          "I13",
+          "I15"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "snomed_ct": {
+        "codes": [
+          "59621000"
+        ],
+        "validation": "candidate - requires review"
+      },
+      "read_v2": {
+        "codes": [
+          "G2",
+          "G20",
+          "G24"
+        ],
+        "validation": "candidate - requires review"
+      }
+    }
+  },
+  "gap_notes": [
+    "Phenotype Library API unavailable (SSL errors) - all codelists marked candidate requiring clinician review",
+    "Recommend BHF DSC Computable phenotypes and codelists service for validated definitions",
+    "dm+d medication codes and OPCS-4 procedure codes require retrieval from NHS browsers"
+  ]
+}
