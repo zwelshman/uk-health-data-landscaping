@@ -1,0 +1,36 @@
+date: "2026-11-19"
+model_name: "GitHub Copilot (Copilot SDK in VS Code)"
+user_query: "CARDINAL-HEALTH project + PH215 MI diagnosis phenotype mapping"
+response_summary: >
+  CARDINAL-HEALTH not found in HDRS tracking; keyword search matched
+  CARDINAL-DATA (London SDE / OneLondon, HDRS Technology Transformation
+  Projects). PH215 v430 (Myocardial infarction, MODIFIED CALIBER) retrieved
+  with 3 concepts: Read v2 C1296 (70 codes), Med C1297 (70), ICD-10 C1298
+  (I21/I22/I23/I241/I252). Broad MI phenotype search (42 hits) yielded 21
+  codelists across 8 terminologies (Read v2, Med, ICD-10, ICD-9, SNOMED CT,
+  OPCS-4, OXMIS, GPRD product) incl. supplements PH1722 (SNOMED 119),
+  PH2794 (NHSD mi_cod refset 154), PH942, PH1024, PH481, PH611/612/613 and
+  medication lists PH495/PH496/PH622. Gateway dataset searches (quoted
+  phrases unsupported; single-word queries) returned 13+ datasets >=60k
+  with MI-relevant fields: CPRD Aurum 56.6M, CPRD GOLD 21.9M, CPRD OMOP
+  CDM 55M/46.6M, HES APC, CUREd+ HES A&E 49.1M, ECDS 33.9M, ACS outcomes
+  61.5k, Scotland CVD-COVID-UK TRE 5.4M, Wales TRE 3.1M, London SDE
+  Primary Care 9.5-11M, Sussex Integrated 2.1M; flagged PIONEER 43.6k
+  (<60k) and 16.6k (<30k), iCARE/HIC/other pop-not-stated. OpenSAFELY
+  ehrQL scaffolding generated (TPP backend): PH215 streams 1-3 + ED
+  flanking, index/recurrent MI, prior CVD comorbidity profile, 12-month
+  secondary-prevention meds, creatinine/HbA1c time-varying covariates,
+  ONS mortality linkage; syntax-validated (py_compile), all inline codes
+  traced to codelists.json exports. BHF DSC services mapped with exact
+  names from reference: Data curation and engineering services (HIGH),
+  Computable phenotypes and codelists (HIGH), Population data + Data
+  discovery and project feasibility (HIGH), Population Data Dashboard,
+  UK CliC researcher support, Curated assets, PPIE support. Errors:
+  PH1778 detail HTTP 401; PhenotypeMCP search_concepts HTTP 500
+  (workaround via phenotype details); Gateway quoted-phrase queries
+  return 0 (workaround single-word); MINAP absent from Gateway.
+artifacts:
+  - "outputs/runs_2026-11-19/code/CARDINAL-HEALTH_PH215/cohort_definition.py"
+  - "outputs/runs_2026-11-19/code/CARDINAL-HEALTH_PH215/codelists.json"
+  - "outputs/runs_2026-11-19/code/CARDINAL-HEALTH_PH215/README.md"
+  - "outputs/runs_2026-11-19/response/2026-11-19T14-43-18Z_CARDINAL-HEALTH_PH215_summary.md"
