@@ -1,7 +1,7 @@
-# CARDINAL-HEALTH × PH215 Deep-Dive Workflow
+# CARDINAL-DATA × PH215 Deep-Dive Workflow
 
 ## Business Objective
-Perform a focused, end-to-end deep-dive of a single HDRS project (CARDINAL-HEALTH) and its target phenotype PH215 (Myocardial Infarction) to:
+Perform a focused, end-to-end deep-dive of a single HDRS project (CARDINAL-DATA) and its target phenotype PH215 (Myocardial Infarction) to:
 - Map the project to BHF Data Science Centre services
 - Identify UK-wide datasets suitable for MI research (population ≥60,000)
 - Exhaustively compile MI-specific codelists across all UK clinical terminologies
@@ -13,7 +13,7 @@ Perform a focused, end-to-end deep-dive of a single HDRS project (CARDINAL-HEALT
 ```mermaid
 flowchart TD
     A[Start: HDRS MCP – Project Lookup] --> B{HDRS record found?}
-    B -- Yes --> C[Extract CARDINAL-HEALTH metadata]
+    B -- Yes --> C[Extract CARDINAL-DATA metadata]
     B -- No --> D[Search HDRS by keyword "CARDINAL"]
     D --> E[Use matched project (e.g., CARDINAL-DATA)]
     C --> E
@@ -28,7 +28,7 @@ flowchart TD
 ## Detailed Steps & Deliverables
 
 ### 1. HDRS Project Lookup
-- **Input**: Project name `"CARDINAL-HEALTH"`
+- **Input**: Project name `"CARDINAL-DATA"`
 - **Action**: 
   - Try exact match via `get_project_details`
   - If not found, search by keyword `"CARDINAL"` via `search_projects`
@@ -86,7 +86,7 @@ flowchart TD
   - Generate `README.md` with deployment guidance, placeholders, and BHF DSC service mapping
 - **Output**: 
   - Syntactically valid Python module (passes `py_compile`)
-  - Complete artifact bundle under `outputs/runs_<YYYY-MM-DD>/code/CARDINAL-HEALTH_PH215/`
+  - Complete artifact bundle under `outputs/runs_<YYYY-MM-DD>/code/CARDINAL-DATA_PH215/`
 - **Deliverable**: OpenSAFELY-ready cohort scaffolding
 
 ### 6. Packaging & Validation
@@ -107,7 +107,7 @@ flowchart TD
   - Confirm summary markdown includes all 8 required sections
 - **Deliverable**: 
   - `manifest.yaml`
-  - Final summary markdown (`response/<timestamp>_CARDINAL-HEALTH_PH215_summary.md`)
+  - Final summary markdown (`response/<timestamp>_CARDINAL-DATA_PH215_summary.md`)
 
 ## Key Outputs (Artifact Bundle)
 
@@ -116,12 +116,12 @@ outputs/
 └── runs_<YYYY-MM-DD>/
     ├── manifest.yaml
     ├── code/
-    │   └── CARDINAL-HEALTH_PH215/
+    │   └── CARDINAL-DATA_PH215/
     │       ├── cohort_definition.py
     │       ├── codelists.json
     │       └── README.md
     └── response/
-        └── <timestamp>_CARDINAL-HEALTH_PH215_summary.md
+        └── <timestamp>_CARDINAL-DATA_PH215_summary.md
 ```
 
 ## Decision Points & Error Handling
