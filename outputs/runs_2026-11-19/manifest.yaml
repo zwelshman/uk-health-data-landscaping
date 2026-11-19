@@ -1,8 +1,8 @@
 date: "2026-11-19"
 model_name: "GitHub Copilot (Copilot SDK in VS Code)"
-user_query: "CARDINAL-HEALTH project + PH215 MI diagnosis phenotype mapping"
+user_query: "CARDINAL-DATA project + PH215 MI diagnosis phenotype mapping"
 response_summary: >
-  CARDINAL-HEALTH not found in HDRS tracking; keyword search matched
+  CARDINAL-DATA not found in HDRS tracking; keyword search matched
   CARDINAL-DATA (London SDE / OneLondon, HDRS Technology Transformation
   Projects). PH215 v430 (Myocardial infarction, MODIFIED CALIBER) retrieved
   with 3 concepts: Read v2 C1296 (70 codes), Med C1297 (70), ICD-10 C1298
@@ -30,7 +30,7 @@ response_summary: >
   (workaround via phenotype details); Gateway quoted-phrase queries
   return 0 (workaround single-word); MINAP absent from Gateway.
 artifacts:
-  - "outputs/runs_2026-11-19/code/CARDINAL-HEALTH_PH215/cohort_definition.py"
-  - "outputs/runs_2026-11-19/code/CARDINAL-HEALTH_PH215/codelists.json"
-  - "outputs/runs_2026-11-19/code/CARDINAL-HEALTH_PH215/README.md"
-  - "outputs/runs_2026-11-19/response/2026-11-19T14-43-18Z_CARDINAL-HEALTH_PH215_summary.md"
+  - "outputs/runs_2026-11-19/code/CARDINAL-DATA_PH215/cohort_definition.py"
+  - "outputs/runs_2026-11-19/code/CARDINAL-DATA_PH215/codelists.json"
+  - "outputs/runs_2026-11-19/code/CARDINAL-DATA_PH215/README.md"
+  - "outputs/runs_2026-11-19/response/2026-11-19T14-43-18Z_CARDINAL-DATA_PH215_summary.md"
