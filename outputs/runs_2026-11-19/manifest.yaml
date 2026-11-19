@@ -2,7 +2,7 @@ date: "2026-11-19"
 model_name: "GitHub Copilot (Copilot SDK in VS Code)"
 user_query: "CARDINAL-DATA project + PH215 MI diagnosis phenotype mapping"
 response_summary: >
-  CARDINAL-DATA not found in HDRS tracking; keyword search matched
+  Keyword search matched
   CARDINAL-DATA (London SDE / OneLondon, HDRS Technology Transformation
   Projects). PH215 v430 (Myocardial infarction, MODIFIED CALIBER) retrieved
   with 3 concepts: Read v2 C1296 (70 codes), Med C1297 (70), ICD-10 C1298
