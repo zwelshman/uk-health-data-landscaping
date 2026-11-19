@@ -1,0 +1,85 @@
+<svg viewBox="0 0 680 840" width="100%" font-family="system-ui, -apple-system, sans-serif" font-size="13">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M0,1 L10,5 L0,9 z" fill="currentColor"></path>
+      </marker>
+    </defs>
+
+    <!-- Node A: Start -->
+    <rect x="180" y="30" width="320" height="42" rx="21" fill="none" stroke="var(--accent, #4c8dff)" stroke-width="2"></rect>
+    <text x="340" y="51" text-anchor="middle" dominant-baseline="middle" fill="currentColor" font-weight="600">Start: HDRS MCP – Project Lookup</text>
+
+    <!-- Edge A -> B -->
+    <line x1="340" y1="72" x2="340" y2="102" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)"></line>
+
+    <!-- Node B: Decision Diamond -->
+    <polygon points="340,102 455,144 340,186 225,144" fill="none" stroke="var(--warning, #d97706)" stroke-width="1.75"></polygon>
+    <text x="340" y="144" text-anchor="middle" dominant-baseline="middle" fill="currentColor" font-weight="600">HDRS record found?</text>
+
+    <!-- Edge B -> C (Yes) -->
+    <polyline points="225,144 175,144 175,226" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)"></polyline>
+    <text x="198" y="134" text-anchor="middle" dominant-baseline="middle" fill="var(--success, #28a745)" font-weight="600">Yes</text>
+
+    <!-- Edge B -> D (No) -->
+    <polyline points="455,144 505,144 505,226" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)"></polyline>
+    <text x="482" y="134" text-anchor="middle" dominant-baseline="middle" fill="var(--danger, #dc3545)" font-weight="600">No</text>
+
+    <!-- Node C: Yes Branch -->
+    <rect x="40" y="226" width="270" height="52" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="175" y="244" text-anchor="middle" dominant-baseline="middle" fill="currentColor">Extract CARDINAL-HEALTH<tspan x="175" dy="17">metadata</tspan></text>
+
+    <!-- Node D: No Branch -->
+    <rect x="370" y="226" width="270" height="52" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="505" y="244" text-anchor="middle" dominant-baseline="middle" fill="currentColor">Search HDRS by keyword<tspan x="505" dy="17">"CARDINAL"</tspan></text>
+
+    <!-- Edges C -> E and D -> E -->
+    <polyline points="175,278 175,301 340,301" fill="none" stroke="currentColor" stroke-width="1.5"></polyline>
+    <polyline points="505,278 505,301 340,301" fill="none" stroke="currentColor" stroke-width="1.5"></polyline>
+    <line x1="340" y1="301" x2="340" y2="324" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)"></line>
+
+    <!-- Node E -->
+    <rect x="150" y="324" width="380" height="44" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="340" y="346" text-anchor="middle" dominant-baseline="middle" fill="currentColor">Use matched project (e.g., CARDINAL-DATA)</text>
+
+    <!-- Edge E -> F -->
+    <line x1="340" y1="368" x2="340" y2="398" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)"></line>
+
+    <!-- Node F -->
+    <rect x="140" y="398" width="400" height="44" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="340" y="420" text-anchor="middle" dominant-baseline="middle" fill="currentColor">PhenotypeMCP – Get PH215 & PH1778 details</text>
+
+    <!-- Edge F -> G -->
+    <line x1="340" y1="442" x2="340" y2="472" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)"></line>
+
+    <!-- Node G -->
+    <rect x="140" y="472" width="400" height="44" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="340" y="494" text-anchor="middle" dominant-baseline="middle" fill="currentColor">PhenotypeMCP – Search MI-related phenotypes</text>
+
+    <!-- Edge G -> H -->
+    <line x1="340" y1="516" x2="340" y2="546" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)"></line>
+
+    <!-- Node H -->
+    <rect x="110" y="546" width="460" height="44" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="340" y="568" text-anchor="middle" dominant-baseline="middle" fill="currentColor">GatewayMCP – Dataset search (MI/CVD keywords + pop ≥60k)</text>
+
+    <!-- Edge H -> I -->
+    <line x1="340" y1="590" x2="340" y2="620" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)"></line>
+
+    <!-- Node I -->
+    <rect x="130" y="620" width="420" height="44" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="340" y="642" text-anchor="middle" dominant-baseline="middle" fill="currentColor">OpenSAFELY MCP – Generate ehrQL scaffolding</text>
+
+    <!-- Edge I -> J -->
+    <line x1="340" y1="664" x2="340" y2="694" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)"></line>
+
+    <!-- Node J -->
+    <rect x="120" y="694" width="440" height="44" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="340" y="716" text-anchor="middle" dominant-baseline="middle" fill="currentColor">Assemble artifacts: manifest, code, README, summary</text>
+
+    <!-- Edge J -> K -->
+    <line x1="340" y1="738" x2="340" y2="768" stroke="currentColor" stroke-width="1.5" marker-end="url(#arrow)"></line>
+
+    <!-- Node K: End -->
+    <rect x="180" y="768" width="320" height="42" rx="21" fill="none" stroke="var(--success, #28a745)" stroke-width="2"></rect>
+    <text x="340" y="789" text-anchor="middle" dominant-baseline="middle" fill="currentColor" font-weight="600">End: Validate & package outputs</text>
+  </svg>
