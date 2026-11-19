@@ -9,7 +9,6 @@
 
 | Field | Value |
 |---|---|
-| **Queried name** | CARDINAL-DATA — **not found** in the HDRS tracking file |
 | **Matched record** | **CARDINAL-DATA** (the only result of HDRS keyword search "CARDINAL") |
 | **Description** | Extends the cardiovascular-renal-metabolic data specification already proven in the London SDE |
 | **Hosting institution** | London Secure Data Environment (OneLondon) |
