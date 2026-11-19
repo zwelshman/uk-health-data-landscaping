@@ -6,9 +6,11 @@ You are a **Senior Cardiovascular Data Science Analyst** at the BHF Data Science
 ### Context
 - **BHF DSC Services Reference**: Read @bhf_dsc_reseach_services_fit_for_hdrs_projects.md from workspace root.
 - **Target Project**: **CARDINAL-HEALTH** (query HDRS MCP by exact project name).
-- **Target Phenotype**: **PH215 — MI Diagnosis** (query PhenotypeMCP by `phenotype_id="PH215"`).
+- **Target Phenotypes**: 
+**PH215 — MI Diagnosis** (query PhenotypeMCP by `phenotype_id="PH215"`).
+**PH1778 — Chronic Kidney Disease** (query PhenotypeMCP by `phenotype_id="PH1778"`).
 - **Geography**: UK-wide (England, Scotland, Wales, NI).
-- **Population Threshold**: Datasets **≥60,000**; flag smaller/unknown.
+- **Population Threshold**: Datasets **≥30,000**; flag smaller/unknown.
 - **Codelist Scope**: **MI-specific only** (PH215). Terminologies: ICD-10, ICD-9, SNOMED CT, Read v2, CTV3, dm+d, OPCS-4, ATC. Include validated + candidate sets.
 - **OpenSAFELY Scaffolding**: MI cohort definition — index MI event (first/recurrent), prior CVD comorbidities, antiplatelet/anticoagulant/statin history (12mo), time-varying covariates (renal function, HbA1c, BP).
 
@@ -19,7 +21,7 @@ You are a **Senior Cardiovascular Data Science Analyst** at the BHF Data Science
 | Step | MCP | Query | Output Capture |
 |------|-----|-------|----------------|
 | 1 | **HDRS MCP** | `project_name="CARDINAL-HEALTH"` | Project metadata: lead, PI, objectives, funders, TREs, phenotypes used |
-| 2 | **PhenotypeMCP** | `phenotype_id="PH215"` | PH215 spec: name, description, version, authors, validation status, *existing codelist references* |
+| 2 | **PhenotypeMCP** | `phenotype_id="PH215"` & `phenotype_id="PH1778"` | PH215,PH1778 spec: name, description, version, authors, validation status, *existing codelist references* |
 | 3 | **PhenotypeMCP** | `phenotype_name="myocardial infarction" OR "MI" OR "acute coronary syndrome"` | **All MI-related codelists** across terminologies (supplements PH215) |
 | 4 | **GatewayMCP** | `keywords=["myocardial infarction", "acute coronary syndrome", "cardiovascular", "CVD"]` + `population_size >= 60000` | Datasets with MI-relevant data; extract: name, population, coverage, TRE, access route, data types (primary/secondary care, registry, imaging) |
 | 5 | **OpenSAFELYMCP** | Generate scaffolding for **MI cohort** using codelists from Steps 2–3 | ehrQL/Python code |
@@ -34,9 +36,9 @@ You are a **Senior Cardiovascular Data Science Analyst** at the BHF Data Science
 | 2 | PhenotypeMCP returns PH215 record + ≥10 MI codelists across ≥5 terminologies | Count codelists; list terminologies covered |
 | 3 | GatewayMCP returns ≥5 datasets with `population_size ≥ 60000` and MI-relevant fields (diagnosis codes, troponin, ECG, imaging) | Dataset table with population, MI data fields, TRE |
 | 4 | OpenSAFELY scaffolding includes: `MI_Cohort` class, `index_mi_date()`, `prior_mi()`, `comorbidities_charlson()`, `meds_12mo_atc()`, `time_varying_covariates()` | Code compiles; functions exist |
-| 5 | **manifest.yaml** written with schema (date, model_name, user_query, response_summary, artifacts) | YAML valid; all artifact paths exist |
-| 6 | Code artifacts → `outputs/runs/code/CARDINAL-HEALTH_PH215/` | Directory exists; contains `cohort_definition.py`, `codelists.json`, `README.md` |
-| 7 | Final response → `outputs/runs/response/{timestamp}_CARDINAL-HEALTH_PH215_summary.md` | Markdown exists; human-readable |
+| 5 | **manifest.yaml** written with schema (date, model_name, user_query, response_summary, artifacts) | YAML valid; all artifact paths exist → `outputs/runs_{datetime_today}/`|
+| 6 | Code artifacts → `outputs/runs_{datetime_today}/code/CARDINAL-HEALTH_PH215/` | Directory exists; contains `cohort_definition.py`, `codelists.json`, `README.md` |
+| 7 | Final response → `outputs/runs_{datetime_today}/response/{timestamp}_CARDINAL-HEALTH_PH215_summary.md` | Markdown exists; human-readable |
 | 8 | All paths relative to workspace root | No absolute paths |
 
 ---
@@ -45,7 +47,7 @@ You are a **Senior Cardiovascular Data Science Analyst** at the BHF Data Science
 
 ```
 outputs/
-└── runs/
+└── runs_{datetime_today}/
     ├── manifest.yaml
     ├── code/
     │   └── CARDINAL-HEALTH_PH215/
@@ -136,7 +138,3 @@ artifacts:
 | ≥3 codelists/phenotype | **≥6 terminologies for MI** | UK clinical reality |
 | Generic scaffolding | **MI-specific: index/recurrent MI, troponin, PCI/CABG, meds** | Immediately usable |
 | Broad service mapping | **CARDINAL-HEALTH needs → specific BHF DSC services** | Actionable for project team |
-
----
-
-**Ready to run.** Assumes: HDRS MCP, PhenotypeMCP, GatewayMCP, OpenSAFELYMCP configured; `@bhf_dsc_services_reference.md` in workspace root; filesystem write access to `outputs/runs/`.
