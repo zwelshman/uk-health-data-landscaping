@@ -1,0 +1,8 @@
+data: "2026-11-20"
+model_name: "Claude 3.5 Sonnet (Copilot SDK)"
+user_query: "Generate 100 research ideas that would benefit cardiovascular AI projects in the UK Data Ecosystem using BHF CVD statistics factsheet as source. Identify projects, people, datasets, phenotypes and do a Deep Dive on recent open publications on AI and Cardiovascular disease. Looking for high impact ideas that will improve a nation's health."
+response_summary: "Generated 100 high-impact cardiovascular AI research ideas across 5 categories: Prevention & Risk Stratification (20), Early Detection & Diagnosis (20), Treatment Optimization & Personalized Medicine (20), Health System & Implementation (20), and Novel Modalities & Emerging Technologies (20). Ideas leverage UK data ecosystem (UK Biobank, NHS, CPRD, HES, Genomics England, BHF Data Science Centre, OpenSAFELY, Phenotype Library, HDRUK Gateway) and address key BHF factsheet issues: 8M+ living with CVD, 170k annual deaths, 3x geographic variation, 16M hypertension, 1.7M AF, 1M+ HF, 4.8M diabetes, 270k FH, 40k OHCA, £29B economic cost. Each idea includes impact level, data sources, AI approach, UK ecosystem fit, and priority score."
+artifacts: 
+  - "outputs/runs/2026-11-20/response/100_cardiovascular_ai_research_ideas.md"
+  - "outputs/runs/2026-11-20/code/research_ideas_database.sql"
+  - "outputs/runs/2026-11-20/code/research_ideas_export.json"
