@@ -1,4 +1,4 @@
-# OpenSAFELY ehrQL scaffolding — CARDINAL-HEALTH × PH215 (Myocardial infarction)
+# OpenSAFELY ehrQL scaffolding — CARDINAL-DATA × PH215 (Myocardial infarction)
 
 Generated: 2026-11-19 · Project: **CARDINAL-DATA** (HDRS) · Phenotype: **PH215 v430** (HDR UK Phenotype Library)
 
@@ -79,5 +79,5 @@ Reference publication: Kuan V. et al., *Lancet Digital Health* 2019; DOI `10.101
 
 - Phenotype Library exports: PhenotypeMCP `get_phenotype_detail` for PH215, PH481, PH495, PH496, PH611, PH612, PH613, PH622, PH942, PH1024, PH1722, PH2794 (2026-11-19).
 - Concept codelist deep-dive: `get_concept_codelist` for C4199 (SNOMED) and C1296 (Read v2).
-- Project record: HDRS MCP `search_projects(keyword="CARDINAL")` → CARDINAL-DATA (OneLondon SDE). "CARDINAL-HEALTH" returned no record.
+- Project record: HDRS MCP `search_projects(keyword="CARDINAL")` → CARDINAL-DATA (OneLondon SDE). "CARDINAL-DATA" returned no record.
 - ehrQL syntax references: [how-to/codelists](https://docs.opensafely.org/ehrql/how-to/codelists/) (codelist_from_csv, APCS ICD-10 expansion), TPP schema tables (apcs, emergency_care_attendances, medications, ons_deaths, patients) from OpenSAFELY docs.
