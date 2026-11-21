@@ -1,0 +1,9 @@
+date: "2026-11-21"
+model_name: "Copilot"
+user_query: "From the hdrsmcp what is the Making secondary care medicines data research-ready projects and what could the @bhf_dsc_services_reference.md do to help make it a success?"
+response_summary: "Analysis of the 'Making secondary care medicines data research-ready' HDRS project and how BHF DSC services can support its success. The project aims to develop standards and tooling to make hospital prescribing and high-cost drugs data research-ready, led by NHS England SDE with PRSB, University of Liverpool, Understanding Patient Data, and King's College Hospital NHS Foundation Trust. BHF DSC services can provide data curation/engineering, computable phenotypes/codelists, curated assets, PPIE support, and population data access across UK SDEs."
+artifacts:
+  - "code/making_secondary_care_medicines_research_ready/cohort_definition.py"
+  - "code/making_secondary_care_medicines_research_ready/codelists.json"
+  - "code/making_secondary_care_medicines_research_ready/README.md"
+  - "response/2026-11-21T12-44-15Z_making_secondary_care_medicines_research_ready_summary.md"
